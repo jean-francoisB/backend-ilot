@@ -1,0 +1,47 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Activité{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_activite_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Activité</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ activite.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                    <a href="{{asset('images/activite/' ~ activite.imageName)}}" data-lightbox="image {{loop.index}}">
+                    <img src="{{asset('images/activite/' ~ activite.imageName)}}" class="img-admin-list">
+
+                </td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ activite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ activite.texte|raw }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ activite.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Mise à jour</th>
+                <td>{{ activite.updatedAt ? activite.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        {{ include('admin_activite/_delete_form.html.twig') }}
+        <a href="{{ path('app_admin_activite_edit', {'id': activite.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+    </div>
+{% endblock %}

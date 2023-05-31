@@ -1,0 +1,35 @@
+
+body{
+    main{
+        .table-index{
+            tr{
+                th{
+                    &:last-child{
+                        text-align: right;
+                    }
+                }
+                td{
+                    &:last-child{
+                        text-align: right;
+                    }
+                    .img-admin-list{
+                        width:100%;
+                        max-width: 200px;
+                    }
+                
+                }
+            }
+        }
+        label{
+            &.required{
+                &:after{
+                    content: "*";
+                    color: red;
+                }
+            }
+        }
+        .form-switch{
+            padding-left: 1rem;
+        }
+    }
+}

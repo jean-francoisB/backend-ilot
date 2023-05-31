@@ -1,0 +1,47 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Festivité{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_festivite_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Festivité</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ festivite.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                    <a href="{{asset('images/festivite/' ~ festivite.imageName)}}" data-lightbox="image {{loop.index}}">
+                    <img src="{{asset('images/festivite/' ~ festivite.imageName)}}" class="img-admin-list">
+
+                </td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ festivite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ festivite.texte|raw }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ festivite.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Mise à jour</th>
+                <td>{{ festivite.updatedAt ? festivite.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        {{ include('admin_festivite/_delete_form.html.twig') }}
+        <a href="{{ path('app_admin_festivite_edit', {'id': festivite.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+    </div>
+{% endblock %}

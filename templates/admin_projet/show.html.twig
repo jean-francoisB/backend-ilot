@@ -1,0 +1,47 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_projet_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Projet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <th>Image</th>
+                <td>
+                    <a href="{{asset('images/projet/' ~ projet.imageName)}}" data-lightbox="image {{loop.index}}">
+                    <img src="{{asset('images/projet/' ~ projet.imageName)}}" class="img-admin-list">
+
+                </td>
+            <tr>
+                <th>Nom</th>
+                <td>{{ projet.nom }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ projet.texte|raw }}</td>
+            </tr>
+            <tr>
+                
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td><i class="align-middle text-{{ projet.isActive ? 'success' : 'danger' }}" data-feather="{{ projet.isActive ? 'check' : 'x' }}"></i></td>
+            </tr>
+            <tr>
+                <th>Mise à jour</th>
+                <td>{{ projet.updatedAt ? projet.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        {{ include('admin_projet/_delete_form.html.twig') }}
+
+        <a href="{{ path('app_admin_projet_edit', {'id': projet.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+    </div>
+{% endblock %}

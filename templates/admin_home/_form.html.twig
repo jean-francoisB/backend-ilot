@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if home.imageName is not null %}
+    <div>
+        <div class="col-12 col-md-3 mb-4">
+            <a href="{{asset('images/home/' ~ home.imageName)}}" data-lightbox="image">
+                <img src="{{asset('images/home/' ~ home.imageName)}}" alt="" class="img-fluid">
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    {{include("common/_required_message.html.twig")}} 
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

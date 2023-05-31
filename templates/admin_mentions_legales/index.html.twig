@@ -1,0 +1,39 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Mentions-Légales index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <h1>Mentions-Légales index</h1>
+        <a href="{{ path('app_admin_mentions_legales_new') }}" class="btn btn-success">Nouveau</a>
+
+    </div>
+    <table class="table table-index table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                {# <th>Texte</th> #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mentions_legale in mentions_legales %}
+            <tr>
+                <td>{{ mentions_legale.id }}</td>
+                <td>{{ mentions_legale.nom }}</td>
+                {# <td>{{ mentions_legale.texte }}</td> #}
+                <td>
+                    <a href="{{ path('app_admin_mentions_legales_show', {'id': mentions_legale.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_mentions_legales_edit', {'id': mentions_legale.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de mentions légales dans la BDD</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

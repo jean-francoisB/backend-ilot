@@ -1,0 +1,48 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Bonus index{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Bonus index</h1>
+    <a href="{{ path('app_admin_bonus_new') }}" class="btn btn-success">Nouveau</a>
+</div>
+    <table class="table table-index table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Nom</th>
+                {# <th>Texte</th> #}
+                <th>Actif</th>
+                <th>Mise à jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bonu in bonuses %}
+            <tr>
+                <td>{{ bonu.id }}</td>
+                <td>
+                    <a href="{{asset('images/bonus/' ~ bonu.imageName)}}" data-lightbox="image {{loop.index}}">
+                    <img src="{{asset('images/bonus/' ~ bonu.imageName)}}" class="img-admin-list">
+
+                </td>
+                <td>{{ bonu.nom }}</td>
+                {# <td>{{ bonu.texte }}</td> #}
+                <td>{{ bonu.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ bonu.updatedAt ? bonu.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_bonus_show', {'id': bonu.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_bonus_edit', {'id': bonu.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de bonnus en BDD</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

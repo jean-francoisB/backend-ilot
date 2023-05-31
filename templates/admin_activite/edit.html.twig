@@ -1,0 +1,15 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Modification Activité{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_activite_index') }}"class="btn btn-dark mb-4">Retour</a>
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+
+        <h1>Modification Activité</h1>
+        {{ include('admin_activite/_delete_form.html.twig') }}
+    </div>
+    {{ include('admin_activite/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+{% endblock %}

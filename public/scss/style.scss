@@ -1,0 +1,21 @@
+body{
+    background: url('../images/connectwork.webp');
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    main{
+        &.container-lg{
+            min-height: calc(100vh-56px-56px);
+        }
+        h1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+        h2{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.8rem;
+        }
+    }
+}

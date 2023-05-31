@@ -1,0 +1,35 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Informations{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_informations_index') }}" class="btn btn-dark">Retour</a>
+    <h1>Informations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ information.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ information.nom }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ information.texte }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td><i class="align-middle text-{{ information.isActive ? 'success' : 'danger' }}" data-feather="{{ information.isActive ? 'check' : 'x' }}"></i></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        {{ include('admin_informations/_delete_form.html.twig') }}
+
+        <a href="{{ path('app_admin_informations_edit', {'id': information.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+    </div>
+{% endblock %}

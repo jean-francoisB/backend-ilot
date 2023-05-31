@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Nouveau Liens-Utiles{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_liens_utiles_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Nouveau Liens-Utiles</h1>
+
+    {{ include('admin_liens_utiles/_form.html.twig') }}
+
+{% endblock %}

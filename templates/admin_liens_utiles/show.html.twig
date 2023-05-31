@@ -1,0 +1,30 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Liens Utiles{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_liens_utiles_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Liens Utiles</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ liens_utile.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ liens_utile.nom }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ liens_utile.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        {{ include('admin_liens_utiles/_delete_form.html.twig') }}
+        <a href="{{ path('app_admin_liens_utiles_edit', {'id': liens_utile.id}) }}" class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+    </div>
+{% endblock %}

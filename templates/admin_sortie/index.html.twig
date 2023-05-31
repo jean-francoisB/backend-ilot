@@ -1,0 +1,49 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Sortie index{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Sortie index</h1>
+    <a href="{{ path('app_admin_sortie_new') }}" class="btn btn-success">Nouveau</a>
+    </div>
+    <table class="table table-index table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Nom</th>
+                {# <th>Texte</th> #}
+                <th>Actif</th>
+                <th>Mise à jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sortie in sorties %}
+            <tr>
+                <td>{{ sortie.id }}</td>
+                <td>
+                    <a href="{{asset('images/sortie/' ~ sortie.imageName)}}" data-lightbox="image {{loop.index}}">
+                        <img src="{{asset('images/sortie/' ~ sortie.imageName)}}" class="img-admin-list">
+                    </a>
+
+                </td>
+                <td>{{ sortie.nom }}</td>
+                {# <td>{{ sortie.texte }}</td> #}
+                <td>{{ sortie.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ sortie.updatedAt ? sortie.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_sortie_show', {'id': sortie.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_sortie_edit', {'id': sortie.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de sortie dans la BDD</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

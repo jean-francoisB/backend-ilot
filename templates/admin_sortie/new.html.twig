@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Nouvelle Sortie{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_sortie_index') }}" class="btn btn-dark mb-4">Retour</a>
+    <h1>Nouvelle Sortie</h1>
+
+    {{ include('admin_sortie/_form.html.twig') }}
+
+{% endblock %}
