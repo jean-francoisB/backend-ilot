@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,6 +43,26 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
+    #[Route(path: '/api/me', name:'app_me')]
+    public function me(TokenStorageInterface $tokenStorage): JsonResponse
+    {
+    
+        $user = $tokenStorage->getToken()->getUser();
+        if ($user instanceof User)
+        {
+            return $this->json([
+                'success' => true,
+                'nom' => $user->getNom(),
+                'prenom' => $user->getPrenom()
+            ]);
+        }
+        else
+        {
+            return $this->json([
+                'success' => false
+            ]);
+        }
+    }
 
     #[Route(path: '/api/logout', name: 'app_login')]
     public function logout(TokenStorageInterface $tokenStorage): JsonResponse

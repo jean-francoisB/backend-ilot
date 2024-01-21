@@ -20,7 +20,7 @@ security:
         #     lazy: true
         #     provider: app_user_provider
 
-        #config\packages\security.yaml
+        # config\packages\security.yaml
 
         login:
             pattern: ^/api/login
